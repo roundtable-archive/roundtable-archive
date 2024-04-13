@@ -33,13 +33,11 @@ jobs:
           submodules: true
       - uses: actions/setup-node@v4
         name: 配置 Nodejs 环境
-        id: node
         with:
           node-version: latest
           cache: npm
           cache-dependency-path: ./package-lock.json
       - name: 安装必要依赖项
-        if: steps.node.outputs.cache-hit != 'true'
         run: npm install
       - name: 执行编译构建
         run: npx hexo generate
