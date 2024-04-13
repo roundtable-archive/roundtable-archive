@@ -8,12 +8,12 @@ subtitle: test2
 description: test1
 keywords:
 author: Wallace the Swiftor
-language: en
+language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://roundtable-archive.github.io/hexo-blog
+url: https://roundtable-archive.github.io/roundtable-archive
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -101,6 +101,6 @@ theme: hexo-theme-matery
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 # deploy:
-#   type: 
-#   repository: 
-#   branch: 
+#   type:
+#   repository:
+#   branch:
