@@ -100,7 +100,7 @@ theme: hexo-theme-matery
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-# deploy:
-#   type:
+# deploy: https://github.com/roundtable-archive/roundtable-archive.io.git
+#   type: https://roundtable-archive.github.io
 #   repository:
 #   branch:

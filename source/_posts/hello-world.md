@@ -1,9 +1,18 @@
 ---
-title: 纱雾の秘密
+title: 
 ---
 
-## 我是谁？
+## Scholar of the First Sin
 
-你好鸭！我是和泉纱雾，一个17岁的女孩子❤
+But then there was Fire.
+And with Fire, came Disparity.
+Heat and cold,
+life and death,
+and of course... Light and Dark.
+Then, from the Dark, They came,
+and found the Souls of Lords within the flame.
+Nito, the first of the dead,
+the Witch of Izalith, and her Daughters of Chaos,
+Gwyn, the Lord of Sunlight, and his faithful knights,
+and the furtive pygmy, so easily forgotten.
 
-想要进一步了解我嘛？可以去看看[萌娘百科](https://mzh.moegirl.org.cn/%E5%92%8C%E6%B3%89%E7%BA%B1%E9%9B%BE)哦～
