@@ -1,758 +1,664 @@
-# hexo-util
+# hexo-theme-matery
 
-[![Build Status](https://github.com/hexojs/hexo-util/workflows/Tester/badge.svg?branch=master)](https://github.com/hexojs/hexo-util/actions?query=workflow%3ATester)
-[![NPM version](https://badge.fury.io/js/hexo-util.svg)](https://www.npmjs.com/package/hexo-util)
-[![Coverage Status](https://coveralls.io/repos/hexojs/hexo-util/badge.svg?branch=master&service=github)](https://coveralls.io/github/hexojs/hexo-util?branch=master)
+[![HitCount](http://hits.dwyl.io/blinkfox/hexo-theme-matery.svg)](http://hits.dwyl.io/blinkfox/hexo-theme-matery) [![Gitter](https://img.shields.io/gitter/room/blinkfox/hexo-theme-matery.svg)](https://gitter.im/hexo-theme-matery/Lobby?utm_source=badge) [![GitHub issues](https://img.shields.io/github/issues/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/issues) [![GitHub license](https://img.shields.io/github/license/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/blob/master/LICENSE) [![Download](https://img.shields.io/badge/downloads-master-green.svg)](https://codeload.github.com/blinkfox/hexo-theme-matery/zip/master) [![Hexo Version](https://img.shields.io/badge/hexo-%3E%3D%205.0.0-blue.svg)](http://hexo.io) [![GitHub forks](https://img.shields.io/github/forks/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/network) [![GitHub stars](https://img.shields.io/github/stars/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/stargazers)
 
-Utilities for [Hexo].
+[🇨🇳中文说明](README_CN.md) | [国内访问示例(http://blinkfox.com)](http://blinkfox.com) | [Github Deploy Demo(https://blinkfox.github.io)](https://blinkfox.github.io)
 
-## Table of contents
+> This is a Hexo blog theme with 'Material Design' and responsive design.
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Cache](#cache)
-- [CacheStream](#cachestream)
-- [camelCaseKeys](#camelcasekeysobj-options)
-- [createSha1Hash](#createsha1hash)
-- [decodeURL](#decodeurlstr)
-- [deepMerge](#deepmergetarget-source)
-- [encodeURL](#encodeurlstr)
-- [escapeDiacritic](#escapediacriticstr)
-- [escapeHTML](#escapehtmlstr)
-- [escapeRegex](#escaperegexstr)
-- [full_url_for](#full_url_forpath)
-- [gravatar](#gravatarstr-options)
-- [hash](#hashstr)
-- [highlight](#highlightstr-options)
-- [htmlTag](#htmltagtag-attrs-text-escape)
-- [isExternalLink](#isexternallinkurl-sitehost-exclude)
-- [Pattern](#patternrule)
-- [Permalink](#permalinkrule-options)
-- [prettyUrls](#prettyurlsurl-options)
-- [prismHighlight](#prismhighlightstr-options)
-- [relative_url](#relative_urlfrom-to)
-- [slugize](#slugizestr-options)
-- [spawn](#spawncommand-args-options)
-- [stripHTML](#striphtmlstr)
-- [wordWrap](#wordwrapstr-options)
-- [tocObj](#tocobjstr-options)
-- [truncate](#truncatestr-options)
-- [unescapeHTML](#unescapehtmlstr)
-- [url_for](#url_forpath-option)
-- [bind(hexo)](#bindhexo)
+## Features
 
-## Installation
+- Simple and beautiful, and post is Beautiful and readable.
+- [Material Design](https://material.io/).
+- Responsive design, which can be displayed well on desktop, tablet, mobile phone, etc.
+- Home page carousel posts and changing 'banner' picture dynamically everyday.
+- Blog posts list with waterflow (There will be 24 images if the article doesn't have featured pictures).
+- Archive page with timeline.
+- Tags page of the **word cloud** and categories page of the **radar chart**
+- Rich 'About' page (including about me, posts charts, my projects, my skills, gallery etc.)
+- Friendly link page for customizable data
+- Support post topping and rewards
+- Support `MathJax`
+- TOC
+- Can be set append the copyright information when copying the content of the post
+- Can be set to do password verification when reading a post
+- Comment module of [Gitalk](https://gitalk.github.io/), [Gitment](https://imsun.github.io/gitment/), [Valine](https://valine.js.org/) and [Disqus](https://disqus.com/).(Gitalk is recommended)
+- Integrated [Busuanzi Statistics](http://busuanzi.ibruce.info/), `Google Analytics` and post word count statistics.
+- Support music playback and video playback on the homepage
+- Support the `emoji` emoticon and use the `markdown emoji` grammar to directly generate the corresponding emoticon.
+- Support [DaoVoice](http://www.daovoice.io/), [Tidio](https://www.tidio.com/) online chat.
 
-``` bash
-$ npm install hexo-util --save
+## Contributor
+
+Thanks to these contributors, without whom, hexo-theme-matery won't be this perfect.
+
+- [@HarborZeng](https://github.com/HarborZeng)
+- [@shw2018](https://github.com/shw2018)
+- [@L1cardo](https://github.com/L1cardo)
+- [@Five-great](https://github.com/Five-great)
+
+## Download
+
+hexo-theme-matery **recommend you to use Hexo 5.0.0 and above**. If you already have your own [Hexo](https://hexo.io/zh-cn/) blog, I suggest you upgrade Hexo to the latest stable version.
+
+Click [here](https://codeload.github.com/blinkfox/hexo-theme-matery/zip/master) to download master branch of the last stable version of the code.After decompressing, copy the `hexo-theme-matery` folder
+to your `themes` folder of your Hexo blog project.
+
+Of course, you can use `git clone` to download in your `themes` folder.
+
+```bash
+git clone https://github.com/blinkfox/hexo-theme-matery.git
 ```
 
-## Usage
+## Configuration
 
-``` js
-var util = require('hexo-util');
+### Modify theme
+
+Modify the value of `theme` in `_config.yml` of Hexo's root folder: `theme: hexo-theme-matery`.
+
+#### Suggestions for other changes to the `_config.yml`:
+
+- Please modify the value of `url` of `_config.yml` to your website's main `URL` (e.g. `http://xxx.github.io`).
+- It's recommended to modify the value of the two `per_page` to be a multiple of `6`, such as: `12`, `18`, etc. so that the posts list can be displayed well under each screen.
+- If you are a Chinese user, it is recommended to change the value of `language` to `zh-CN`.
+
+### new categories page
+
+`categories` page is to show all of categories. If the `source` directory of your blog doesn't have `categories/index.md` file, you need to create a new one like this:
+
+```bash
+hexo new page "categories"
 ```
 
-### Cache()
+when editing your new page file `/source/categories/index.md`, you need something like:
 
-A simple plain object cache
-
-``` js
-const cache = new Cache();
-
-// set(key, value)
-cache.set('foo', 'bar');
-
-// get(key) => value
-cache.get('foo');
-// 'bar'
-
-// has(key) => Boolean
-cache.has('foo');
-// true
-cache.has('bar');
-// false
-
-// apply(key. value)
-cache.apply('baz', () => 123);
-// 123
-cache.apply('baz', () => 456);
-// 123
-cache.apply('qux', 456);
-// 456
-cache.apply('qux', '789');
-// 456
-
-// size()
-cache.size();
-// 3
-
-// dump()
-cache.dump();
-/*
-{
-  foo: 'bar',
-  baz: 123,
-  qux: 456
-}
-*/
-
-// del(key)
-cache.del('baz');
-cache.has('baz');
-// false
-
-// flush()
-cache.flush();
-cache.has('foo');
-// false
-cache.size();
-// 0
+```yaml
+---
+title: categories
+date: 2018-09-30 17:25:30
+type: "categories"
+layout: "categories"
+---
 ```
 
-### CacheStream()
+### new tags page
 
-Caches contents piped to the stream.
+`tags` page is to show all of tags. If the `source` directory of your blog doesn't have `tags/index.md` file, you need to create a new one like this:
 
-``` js
-var stream = new CacheStream();
-
-fs.createReadStream('/path/to/file').pipe(stream);
-
-stream.on('finish', function(){
-  // Read cache piped to the stream
-  console.log(stream.getCache());
-
-  // Destroy cache
-  stream.destroy();
-});
+```bash
+hexo new page "tags"
 ```
 
-### camelCaseKeys(obj, options)
+and put the following in your new page file `/source/tags/index.md`,
 
-Convert object keys to camelCase. Original keys will be converted to getter/setter and sync to the camelCase keys.
-
-``` js
-camelCaseKeys({
-  foo_bar: 'test'
-});
-// { fooBar: 'test', foo_bar: 'test' }
+```yaml
+---
+title: tags
+date: 2018-09-10 18:23:38
+type: "tags"
+layout: "tags"
+---
 ```
 
-### createSha1Hash()
-return SHA1 hash object.
- This is the same as calling `createHash('utf8')` in the node.js native module crypto.
- ``` js
-const sha1 = createSha1Hash();
- fs.createReadStream('/path/to/file')
-  .pipe(sha1)
-  .on('finish', () => {
-    console.log(sha1.read());
-  });
+### new about page
+
+`about` page is to show my blog and myself information. If the `source` directory of your blog doesn't have `about/index.md` file, create a new one like this:
+
+```bash
+hexo new page "about"
 ```
 
-### decodeURL(str)
+and edit your new page file `/source/about/index.md` to include:
 
-Decode [encoded](https://en.wikipedia.org/wiki/Percent-encoding) URL or path. An alternative to the native [`decodeURI()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURI) function, with added ability to decode [punycoded](https://en.wikipedia.org/wiki/Punycode) domain.
-
-``` js
-decodeURL('http://foo.com/b%C3%A1r')
-// http://foo.com/bár
-
-decodeURL('http://xn--br-mia.com/baz')
-// http://bár.com/baz
-
-decodeURL('/foo/b%C3%A1r/')
-// /foo/bár/
-
-/* Alternatively, Node 10+ offers native API to decode punycoded domain */
-const {format} = require('url')
-decodeURI(format(new URL('http://xn--br-mia.com.com/b%C3%A1r'), {unicode: true}))
-// http://bár.com/báz
+```yaml
+---
+title: about
+date: 2018-09-30 17:25:30
+type: "about"
+layout: "about"
+---
 ```
 
-### deepMerge(target, source)
+### new contact page (Optional)
 
-Merges the enumerable properties of two objects deeply. `target` and `source` remain untouched.
+`contact` page is to show contact information. If the `source` directory of your blog doesn't have `contact/index.md` file, you need to new one like this:
 
-``` js
-// Merge deeply
-const obj1 = {a: {b: 1, c: 1, d: {e: 1, f: 1}}};
-const obj2 = {a: {b: 2, d: {f: 'f'} }};
-
-deepMerge(obj1, obj2);
-// {a: {b: 2, c: 1, d: {e: 1, f: 'f'} }}
+```bash
+hexo new page "contact"
 ```
 
-``` js
-// Arrays will be combined in the same property, similar to lodash.merge
-const obj1 = { 'a': [{ 'b': 2 }, { 'd': 4 }] };
-const obj2 = { 'a': [{ 'c': 3 }, { 'e': 5 }] };
+when editing your new page file `/source/contact/index.md`, include the following at the beginning:
 
-deepMerge(obj1, obj2);
-// { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] };
+```yaml
+---
+title: contact
+date: 2018-09-30 17:25:30
+type: "contact"
+layout: "contact"
+---
 ```
 
-### encodeURL(str)
+> **Note**：The message board depends on a third-party comment system, please **activate** your comment system to be effective. And in the theme's `_config.yml` file, the "**menu**" of the `19` to `21` line is configured, and the comment about the message board could be canceled.
 
-Encode URL or path into a [safe format](https://en.wikipedia.org/wiki/Percent-encoding).
+### new friends link page (Optional)
 
-``` js
-encodeURL('http://foo.com/bár')
-// http://foo.com/b%C3%A1r
+The `friends` page is a page for displaying **Friendly Links** information. If you don't have a `friends/index.md` file in your blog's `source` directory, then you need to create a new one. The command is as follows:
 
-encodeURL('/foo/bár/')
-// /foo/b%C3%A1r/
+```bash
+hexo new page "friends"
 ```
 
-### escapeDiacritic(str)
+Edit the file `/source/friends/index.md` you just created, at least you need the following:
 
-Escapes diacritic characters in a string.
-
-### escapeHTML(str)
-
-Escapes HTML entities in a string.
-
-``` js
-escapeHTML('<p>Hello "world".</p>')
-// &lt;p&gt;Hello &quot;world&quot;.&lt;&#x2F;p&gt;
-
-/* support escaped characters */
-escapeHTML('&lt;foo>bar</foo&gt;')
-// &lt;foo&gt;bar&lt;&#x2F;foo&gt;
+```yaml
+---
+title: friends
+date: 2018-12-12 21:25:30
+type: "friends"
+layout: "friends"
+---
 ```
 
-### escapeRegex(str)
+Also, create a new `_data` directory in your blog's `source` directory and a new `friends.json` file in the `_data` directory. The contents of the file is as follows:
 
-Escapes special characters in a regular expression.
+```json
+[{
+    "avatar": "http://image.luokangyuan.com/1_qq_27922023.jpg",
+    "name": "MaJang",
+    "introduction": "I am not a master, just looking for the master's footsteps.",
+    "url": "http://luokangyuan.com/",
+    "title": "Read More"
+}, {
+    "avatar": "http://image.luokangyuan.com/4027734.jpeg",
+    "name": "Blinkfox",
+    "introduction": "Hello, I'm blinkfox, I like programming.",
+    "url": "https://blinkfox.github.io/",
+    "title": "Visit Blog"
+}, {
+    "avatar": "http://image.luokangyuan.com/avatar.jpg",
+    "name": "ja_rome",
+    "introduction": "Ordinary steps can also go out of the great journey.",
+    "url": "https://me.csdn.net/jlh912008548",
+    "title": "Read More"
+}]
+```
+### new 404 page
 
-### full_url_for(path)
+If the `source` directory of your blog doesn't have `404.md` file, you need create a new one. In `/source/404.md`, you need something as follows:
 
-Returns a url with the config.url prefixed. Output is [encoded](#encodeurlstr) automatically. Requires [`bind(hexo)`](#bindhexo).
-
-``` yml
-_config.yml
-url: https://example.com/blog # example
+```yaml
+---
+title: 404
+date: 2020-05-30 00:00:00
+type: "404"
+layout: "404"
+description: "Cannot find the page you want :("
+---
 ```
 
-``` js
-full_url_for('/a/path')
-// https://example.com/blog/a/path
+### Menu navigation configuration
+
+#### Configure the name of the basic menu navigation, path url and icon icon.
+
+1. The menu navigation name can be Chinese or English (e.g.: `Index` or `主页`)
+2. Icon icon can be found in [Font Awesome](https://fontawesome.com/icons)
+
+```yaml
+menu:
+  Index:
+    url: /
+    icon: fas fa-home
+  Tags:
+    url: /tags
+    icon: fas fa-tags
+  Categories:
+    url: /categories
+    icon: fas fa-bookmark
+  Archives:
+    url: /archives
+    icon: fas fa-archive
+  About:
+    url: /about
+    icon: fas fa-user-circle
+  Friends:
+    url: /friends
+    icon: fas fa-address-book
 ```
 
-### gravatar(str, [options])
+#### Secondary menu configuration method
 
-Returns the gravatar image url from an email.
+If you need a secondary menu, you can do the following on the basis of the original basic menu navigation.
 
-If you didn't specify the [options] parameter, the default options will apply. Otherwise, you can set it to a number which will then be passed on as the size parameter to Gravatar. Finally, if you set it to an object, it will be converted into a query string of parameters for Gravatar.
+1. Add the `children` keyword to the first level menu that needs to add a secondary menu (e.g.: add `children` under the `About` menu)
+2. Create a secondary menu name, path url and icon icon under `children`.
+3. Note that each secondary menu module must be preceded by `-`.
+4. Note the indentation format.
 
-Option | Description | Default
---- | --- | ---
-`s` | Output image size | 80
-`d` | Default image |
-`f` | Force default |
-`r` | Rating |
-
-More info: [Gravatar](https://en.gravatar.com/site/implement/images/)
-
-``` js
-gravatar('a@abc.com')
-// https://www.gravatar.com/avatar/b9b00e66c6b8a70f88c73cb6bdb06787
-gravatar('a@abc.com', 40)
-// https://www.gravatar.com/avatar/b9b00e66c6b8a70f88c73cb6bdb06787?s=40
-gravatar('a@abc.com' {s: 40, d: 'https://via.placeholder.com/150'})
-// https://www.gravatar.com/avatar/b9b00e66c6b8a70f88c73cb6bdb06787?s=40&d=https%3A%2F%2Fvia.placeholder.com%2F150
+```yaml
+menu:
+  Index:
+    url: /
+    icon: fas fa-home
+  Tags:
+    url: /tags
+    icon: fas fa-tags
+  Categories:
+    url: /categories
+    icon: fas fa-bookmark
+  Archives:
+    url: /archives
+    icon: fas fa-archive
+  About:
+    url: /about
+    icon: fas fa-user-circle
+  Friends:
+    url: /friends
+    icon: fas fa-address-book
+  Medias:
+    icon: fas fa-list
+    children:
+      - name: Music
+        url: /music
+        icon: fas fa-music
+      - name: Movies
+        url: /movies
+        icon: fas fa-film
+      - name: Books
+        url: /books
+        icon: fas fa-book
+      - name: Galleries
+        url: /galleries
+        icon: fas fa-image
 ```
 
-### hash(str)
+### Code Highlight
 
-Generates SHA1 hash.
+Starting from Hexo 5.0.0 version, it comes with support for `prismjs` code syntax highlighting, and hexo-theme-matery has been modified to support it.
 
-``` js
-hash('123456');
-// <Buffer 7c 4a 8d 09 ca 37 62 af 61 e5 95 20 94 3d c2 64 94 f8 94 1b>
+If the plugin of `hexo-prism-plugin` has been installed in your blog, then you need to execute `npm uninstall hexo-prism-plugin` to uninstall it, otherwise there will be `&#123;`, `&#125;` escape characters in the code block of the post.
+
+Then, modify the value of `highlight.enable` to `false` in `_config.yml` at the root your hexo project, and set the value of `prismjs.enable` to `true`, the main configuration is as follows:
+
+```yaml
+highlight:
+  enable: false
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  enable: true
+  preprocess: true
+  line_number: true
+  tab_replace: ''
 ```
 
-### highlight(str, [options])
+The default `prismjs` theme in the hexo-theme-matery is `Tomorrow Night`, if you want to customize your own theme, you can go to [prismjs download page](https://prismjs.com/download.html) to download yourself favorite theme `css` file, then name this css theme file `prism.css`, replace the `source/libs/prism/prism.css` file in the theme folder of `hexo-theme-matery`.
 
-Syntax highlighting for a code block.
+### Search
 
-Option | Description | Default
---- | --- | ---
-`gutter` | Whether to show line numbers | true
-`wrap` | Whether to wrap the code block in [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table) | true
-`firstLine` | First line number | 1
-`hljs` | Whether to use the `hljs-*` prefix for CSS classes | false
-`lang` | Language |
-`caption` | Caption |
-`tab`| Replace tabs |
-`autoDetect` | Detect language automatically (warning: slow)<br>_Sublanguage highlight requires `autoDetect` to be enabled and `lang` to be unset_  | false
-`mark` | Line highlight specific line(s) |
-`languageAttr` | Output code language into `data-language` attr | false
-`stripIndent`| Whether to strip leading whitespace via [strip-indent](https://www.npmjs.com/package/strip-indent) | true
+The theme uses the Hexo plugin [hexo-generator-search](https://github.com/wzpan/hexo-generator-search) to search the content, and the Installation command is as follows:
 
-### htmlTag(tag, attrs, text, escape)
-
-Creates a html tag.
-
-Option | Description | Default
---- | --- | ---
-`tag` | Tag / element name |
-`attrs` | Attribute(s) and its value.<br>Value is always [escaped](#escapehtmlstr), URL is always [encoded](#encodeurlstr). |
-`text` | Text, the value is always escaped<br>_(except for `<style>` tag)_ |
-`escape` | Whether to escape the text | true
-
-``` js
-htmlTag('img', {src: 'example.png'})
-// <img src="example.png">
-
-htmlTag('a', {href: 'http://hexo.io/'}, 'Hexo')
-// <a href="http://hexo.io/">Hexo</a>
-
-htmlTag('link', {href: 'http://foo.com/'}, '<a>bar</a>')
-// <a href="http://foo.com/">&lt;bar&gt;</a>
-
-htmlTag('a', {href: 'http://foo.com/'}, '<b>bold</b>', false)
-// <a href="http://foo.com/"><b>bold</b></a>
-
-/* text value of <style> won't be escaped, url is still encoded */
-htmlTag('style', {}, 'p { content: "<"; background: url("bár.jpg"); }')
-// <style>p { content: "<"; background: url("b%C3%A1r.jpg"); }</style>
-
-/* support script tag with async/defer */
-htmlTag('script', {src: '/foo.js', async: true}, '')
-// <script src="/foo.js" async></script>
+```bash
+npm install hexo-generator-search --save
 ```
 
-### isExternalLink(url, sitehost, [exclude])
+Add the following content in `_config.yml` at the root of your hexo project:
 
-Option | Description | Default
---- | --- | ---
-`url` | The input URL. |
-`sitehost` | The hostname / url of website. You can also pass `hexo.config.url`. |
-`exclude` | Exclude hostnames. Specific subdomain is required when applicable, including www. | `[]`
-
-Returns if a given url is external link relative to given `sitehost` and `[exclude]`.
-
-``` js
-// 'sitehost' can be a domain or url
-isExternalLink('https://example.com', 'example.com');
-// false
-isExternalLink('https://example.com', 'https://example.com');
-// false
-isExternalLink('https://example.com', '//example.com/blog/');
-// false
+```yaml
+search:
+  path: search.xml
+  field: post
 ```
 
-``` js
-isExternalLink('/archives/foo.html', 'example.com');
-// false
-isExternalLink('https://foo.com/', 'example.com');
-// true
+### Translate Chinese Link to Pinyin (Recommended)
+
+Default permalinks of Hexo will include Chinese if your article's title is Chinese. But it's adverse to `SEO`, and `gitment` comments don't support Chinese Link as well. We can use the [hexo-permalink-pinyin](https://github.com/viko16/hexo-permalink-pinyin) Hexo plugin to generate permalinks in Chinese Pinyin when generating posts.
+
+Installation command is as follows：
+
+```bash
+npm i hexo-permalink-pinyin --save
 ```
 
-``` js
-isExternalLink('https://foo.com', 'example.com', ['foo.com', 'bar.com']);
-// false
-isExternalLink('https://bar.com', 'example.com', ['foo.com', 'bar.com']);
-// false
-isExternalLink('https://baz.com/', 'example.com', ['foo.com', 'bar.com']);
-// true
+Add such configurations in `_config.yml` file of Hexo:
+
+```yaml
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
+```
+
+> **Note**: [hexo-abbrlink](https://github.com/rozbo/hexo-abbrlink) can generate non-Chinese link in addition to this plugin.
+
+### Post word count statistics plugin (Recommended)
+
+If you want to display the post word count and reading time information in the post detail page, you can install the [hexo-wordcount](https://github.com/willin/hexo-wordcount) plugin.
+
+Installation command is as follows：
+
+```bash
+npm i --save hexo-wordcount
+```
+
+Then just activate the following configuration items in the theme `_config.yml` file:
+
+```yaml
+postInfo:
+  date: true
+  update: false
+  wordCount: false # set true.
+  totalCount: false # set true.
+  min2read: false # set true.
+  readCount: false # set true.
+```
+
+### Add emoji support (Optional)
+
+This theme adds support for the `emoji` emoticon, using the Hexo plugin [hexo-filter-github-emojis](https://npm.taobao.org/package/hexo-filter-github-emojis) to support the generation of the `emoji` expression. The corresponding `markdown emoji` syntax (`::`, for example: `:smile:`) is converted into a `emoji` expression that jumps. The installation command is as follows:
+
+```bash
+npm install hexo-filter-github-emojis --save
+```
+
+Add the following configuration into the `_config.yml` file in your hexo project root folder：
+
+```yaml
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:
+```
+
+Execute `hexo clean && hexo g` to regenerate the blog file, and then you can see the expression you wrote in the `emoji` grammar in the corresponding position in the article.
+
+### Add RSS feed support (Optional)
+
+The theme uses the Hexo plugin [hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed) to support `RSS` feed , and the Installation command is as follows:
+
+```bash
+npm install hexo-generator-feed --save
+```
+
+Add the following configuration into the `_config.yml` file in your hexo project root folder：
+
+```yaml
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+```
+
+Execute `hexo clean && hexo g` to regenerate the blog file, and then you can see the `atom.xml` file in the `public` folder, indicating that you have successfully installed.
+
+### [DaoVoice](http://www.daovoice.io/) online chat (Optional)
+
+Go to the official website of [DaoVoice](http://www.daovoice.io/), register and get the `app_id`. Fill the `app_id` into the the theme `_config.yml` file.
+
+### [Tidio](https://www.tidio.com/) online chat (Optional)
+
+Go to the official website of [Tidio](https://www.tidio.com/), register and get the `Public Key`. Fill the `Public Key` into the the theme `_config.yml` file.
+
+### Modify website footer
+
+Website footer may need to be customized, and it is not convenient to make it part of the configuration, So you need to modify and process it by yourself. Changes could be made in the theme's `/layout/_partial/footer.ejs` file, including the site information, the theme used, the amount of traffic and so on.
+
+### Modify social links
+
+In the theme `_config.yml` file, the configurations of `QQ`, `GitHub` and mailbox and more are supported by default. In the `/layout/_partial/social-link.ejs` file of the theme, you can add or modify social link addresses as you need. To add a link, please refer to the following code:
+
+```html
+<% if (theme.socialLink.github) { %>
+    <a href="<%= theme.socialLink.github %>" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+<% } %>
+```
+
+You can search social icons such as `fab fa-github` in [Font Awesome](https://fontawesome.com/icons). There are common social icons you can reference:
+
+- Facebook: `fab fa-facebook`
+- Twitter: `fab fa-twitter`
+- Google-plus: `fab fa-google-plus`
+- Linkedin: `fab fa-linkedin`
+- Tumblr: `fab fa-tumblr`
+- Medium: `fab fa-medium`
+- Slack: `fab fa-slack`
+- Sina Weibo: `fab fa-weibo`
+- Wechat: `fab fa-weixin`
+- QQ: `fab fa-qq`
+- Zhihu: `fab fa-zhihu`
+
+> **Note**: The version of `Font Awesome` used by matery is `5.11.0`.
+
+### Configure music player (optional)
+
+To support music playing, you just need to activate music playing configuration in the theme's `_config.yml` file.
+
+```yaml
+# Whether to display the music
+music:
+  enable: true
+  title: 		   # non-fixed mode works
+    enable: true
+    show: Listen to music
+  server: netease   # require music platform: netease, tencent, kugou, xiami, baidu
+  type: playlist    # require song, playlist, album, search, artist
+  id: 503838841     # require song id / playlist id / album id / search keyword
+  fixed: false      # enable fixed mode
+  autoplay: false   # audio atuoplay
+  theme: '#42b983'
+  loop: 'all'       # player loop play, values: 'all', 'one', 'none'
+  order: 'random'   # player play order, values: 'list', 'random'
+  preload: 'auto'   # values: 'none', 'metadata', 'auto'
+  volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+  listFolded: true  # indicate whether list should folded at first
+```
+
+>`server` values :  `netease` (NetEase  cloud music) , `tencent` (QQMusic) , `kugou` (KuGouMusic) , `xiami`  
+>(XiamMusic) , `baidu` (BaiduMusic)  
+>`type` values : `song`  ,   `playlist` , `album` , `search` , `artist`  
+>For example to get the `id`:open NetEase cloud music in the browser , click the playlist of my love , there will a string of  
+>numbers  in the browser\`s address bar  ,  the `playlist`\`s `id` just is the string of numbers.
+
+### add note
+
+> [demonstration](https://blog.17lai.site/posts/cf0f47fd/#tag-note)
+
+#### Usage
+
+```
+{% note [class] [no-icon] [summary] %}
+Any content (support inline tags too).
+{% endnote %}
+```
+
+- `[class]` : *Optional parameter.* Supported values: default | primary | success | info | warning | danger.
+- `[no-icon]` : *Optional parameter.* Disable icon in note.
+- `[summary]` : *Optional parameter.* Optional summary of the note.
+
+All parameters are optional.
+
+#### example
+
+```
+{% note %}
+#### Header
+(without define class style)
+{% endnote %}
+```
+
+### add button
+
+> [demonstration](https://blog.17lai.site/posts/cf0f47fd/#tag-button)
+
+#### Usage
+
+```
+{% button url, text, icon [class], [title] %}
+```
+
+or
+
+```
+{% btn url, text, icon [class], [title] %}
+```
+
+- `url` : Absolute or relative path to URL.
+- `text` : Button text. Required if no icon specified.
+- `icon` : Font Awesome icon name. Required if no text specified.
+- `[class]` : *Optional parameter.* Font Awesome class(es): `fa-fw` | `fa-lg` | `fa-2x` | `fa-3x` | `fa-4x` | `fa-5x`
+- `[title]` : *Optional parameter.* Tooltip at mouseover.
+
+#### Examples
+
+```
+{% button #, Text %}
 ```
 
 
-### Pattern(rule)
+## Post Front-matter
 
-Parses the string and tests if the string matches the rule. `rule` can be a string, a regular expression or a function.
+### Detailed Front-matter options
 
-``` js
-var pattern = new Pattern('posts/:id');
+Everything in the Front-matter option is **not required**. But I still recommend at least filling in the values of `title` and `date`.
 
-pattern.match('posts/89');
-// {0: 'posts/89', 1: '89', id: '89'}
+| Options   | Defaults              | Description                                             |
+| ---------- | --------------------------- | ------------------------------------------------------------ |
+| title      | Markdown's file title | Post title, it is highly recommended to fill in this option |
+| date       | Date and time when the file created | Publish time, it is highly recommended to fill in this option, and it is best to ensure that it is globally unique |
+| author     | `author` in root `_config.yml` | Post author                                    |
+| img        | a value in `featureImages`  | Post feature image，For example: `http://xxx.com/xxx.jpg` |
+| top        | `true`                      | Recommended post (whether the post is topped), if the `top` value is `true`, it will be recommended as a homepage post. |
+| hide        | `false`                      | Whether show this post in homepage, if the `hide` value is `true`, it will not be showed in homepage. |
+| cover      | `false`                     | The `v1.0.2` version is added to indicate whether the post needs to be added to the homepage carousel cover. |
+| coverImg   | null                        | The new version of `v1.0.2` indicates that the post needs to display the image path on the cover of the homepage. If not, the default image of the post is used by default. |
+| password   | null                        | The post read the password. If you want to set the reading verification password for the article, you can set the value of `password`, which must be encrypted with `SHA256` to prevent others from seeing it. The premise is that the `verifyPassword` option is activated in the theme's `config.yml` |
+| toc        | `true`                      | Whether TOC is turned on or not, you can turn off the TOC function for an article. The premise is that the `toc` option is activated in the theme's `config.yml` |
+| mathjax    | `false`                     | Whether to enable math formula support, whether this article starts `mathjax`, and you need to open it in the theme `_config.yml` file. |
+| summary    | null                        | Post summary, custom post summary content, if the attribute has a value, the post card summary will display the text, otherwise the program will automatically intercept part of the article as a summary |
+| categories | null                        | Article classification, the classification of this topic represents a macroscopically large classification, only one article is recommended for one classification. |
+| tags       | null                        | Post label, a post can have multiple labels |
+| keywords   | Post Title                  | Post key Words With SEO                               |
+| reprintPolicy       | cc_by              | Post reprint policy, value could be one of cc_by, cc_by_nd, cc_by_sa, cc_by_nc, cc_by_nc_nd, cc_by_nc_sa, cc0, noreprint and pay |
+
+> **Note**: 
+> 1. post's featured picture will take remainder if not writing the `img` property, and choose the featured picture of theme to let all of post's picture **have their own characteristics**.
+> 2. The value of `date` should try to ensure that each article is unique, because `Gitalk` and `Gitment` recognize `id` in this topic are uniquely identified by the value of `date`.
+> 3. If you want to set the ability to read the verification password for the article, you should not only set the value of the password with SHA256 encryption in Front-matter, but also activate the configuration in the theme `_config.yml`.
+> 4. you can define reprint policy for a single article in the front-matter of the specific md file using this key: reprintPolicy
+
+The following are examples of the post's `Front-matter`.
+
+### The simplest example
+
+```yaml
+---
+title: typora-vue-theme Theme introduction
+date: 2018-09-07 09:25:00
+---
 ```
 
-``` js
-var pattern = new Pattern('posts/*path');
+### The most comprehensive example
 
-pattern.match('posts/2013/hello-world');
-// {0: 'posts/2013/hello-world', 1: '2013/hello-world', path: '2013/hello-world'}
+```yaml
+---
+title: typora-vue-theme Theme introduction
+date: 2018-09-07 09:25:00
+author: Qi Zhao
+img: /source/images/xxx.jpg
+top: true
+hide: false
+cover: true
+coverImg: /images/1.jpg
+password: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
+toc: false
+mathjax: false
+summary: This is the content of your custom post summary. If there is a value for this attribute, the post card summary will display the text, otherwise the program will automatically intercept part of the post content as a summary.
+categories: Markdown
+tags:
+  - Typora
+  - Markdown
+---
 ```
 
-### Permalink(rule, [options])
+## Screenshot
 
-Parses a permalink.
+### Home
 
-Option | Description
---- | ---
-`segments` | Customize the rule of a segment in the permalink
+![首页](http://static.blinkfox.com/matery-20181202-1.png)
 
-``` js
-var permalink = new Permalink(':year/:month/:day/:title', {
-  segments: {
-    year: /(\d{4})/,
-    month: /(\d{2})/,
-    day: /(\d{2})/
-  }
-});
+![首页推荐文章](http://static.blinkfox.com/matery-20181202-2.png)
 
-permalink.parse('2014/01/31/test');
-// {year: '2014', month: '01', day: '31', title: 'test'}
+![首页文章列表](http://static.blinkfox.com/matery-20181202-3.png)
 
-permalink.test('2014/01/31/test');
-// true
+![首页文章列表](http://static.blinkfox.com/matery-20181202-7.png)
 
-permalink.stringify({year: '2014', month: '01', day: '31', title: 'test'})
-// 2014/01/31/test
-```
+![首页文章列表](http://static.blinkfox.com/matery-20181202-8.png)
 
-### prettyUrls(url, [options])
+## Custom modification
 
-Rewrite urls to pretty URLs.
+You can modify some custom modification in `_config.yml` as follows:
 
-Option | Description | Default
---- | --- | ---
-`trailing_index` | `/about/index.html -> /about/` when `false` | `true`
-`trailing_html` | `/about.html -> /about` when `false` | `true`
+- Menu
+- My dream
+- Home music player and video player configuration
+- Whether to display the title of the recommended posts
+- `favicon` and `Logo`
+- profiles
+- TOC
+- post rewards
+- Append copyright information when copying article content
+- MathJax
+- Post word count, reading times
+- the 'love' effect of clicking on the page
+- My Projects
+- My Skills
+- My Gallery
+- Gitalk, Gitment, Valine and Disqus
+- [Busuanzi Statistics](http://busuanzi.ibruce.info/) And Google Analytics
+- The map of default featured pictures. The theme will take remainder according to `hashcode` of the post title if the post does not set featured pictures.
 
-Note: `trailing_html` ignores any link with a trailing `index.html`. (will not be rewritten to `index`).
+**I think everyone should have their own style and feature for their blogs**. If you are not satisfied with the theme's functions and color, you can modify them by yourself,
+and more free functions and details could be changed by modifying source code when it is hard to achieve by modifying the theme's `_config.yml`.
 
-``` js
-prettyUrls('/foo/bar.html');
-// /foo/bar.html
-prettyUrls('/foo/bar/index.html');
-// /foo/bar/index.html
+### Customizing theme color
 
-prettyUrls('/foo/bar.html', { trailing_index: false });
-// /foo/bar.html
-prettyUrls('/foo/bar/index.html', { trailing_index: false });
-// /foo/bar/
+Search `.bg-color` to modify background color in `/source/css/matery.css` in theme file：
 
-prettyUrls('/foo/bar.html', { trailing_html: false });
-// /foo/bar
-prettyUrls('/foo/bar/index.html', { trailing_html: false });
-// /foo/bar/index.html
-
-prettyUrls('/foo/bar.html', { trailing_index: false, trailing_html: false });
-// /foo/bar
-prettyUrls('/foo/bar/index.html', { trailing_index: false, trailing_html: false });
-// /foo/bar/
-```
-
-### prismHighlight(str, [options])
-
-Syntax highlighting for a code block using PrismJS.
-
-Option | Description | Default
---- | --- | ---
-`lineNumber` | Whether to show line numbers | true
-`lang` | Language | `'none'`
-`tab`| Replace tabs |
-`isPreprocess` | Enable preprocess or not | true
-`mark` | Highlight specific line |
-`firstLine` | First line number |
-`caption` | Caption |
-`stripIndent`| Whether to strip leading whitespace via [strip-indent](https://www.npmjs.com/package/strip-indent) | true
-
-
-When `isPreprocess` is enabled, `prismHighlight()` will return PrismJS processed HTML snippet. Otherwise `str` will only be escaped and `prismHighlight()` will return the HTML snippet that is suitable for `prism.js` working in the Browser.
-
-`mark` and `firstLine` options will have effect only when `isPreprocess` is disabled.
-
-### relative_url(from, to)
-
-Returns the relative URL from `from` to `to`. Output is [encoded](#encodeurlstr) automatically. Requires [`bind(hexo)`](#bindhexo).
-
-``` js
-relative_url('foo/bar/', 'css/style.css')
-// ../../css/style.css
-```
-
-### slugize(str, [options])
-
-Transforms a string into a clean URL-friendly string.
-
-Option | Description | Default
---- | --- | ---
-`separator` | Separator | -
-`transform` | Transform the string into lower case (`1`) or upper case (`2`) |
-
-``` js
-slugize('Hello World') = 'Hello-World'
-slugize('Hellô Wòrld') = 'Hello-World'
-slugize('Hello World', {separator: '_'}) = 'Hello_World'
-slugize('Hello World', {transform: 1}) = 'hello-world'
-slugize('Hello World', {transform: 2}) = 'HELLO-WORLD'
-```
-
-### spawn(command, [args], [options])
-
-Launches a new process with the given `command`. This method returns a promise.
-
-Option | Description | Default
---- | --- | ---
-`cwd` | Current working directory of the child process |
-`env` | Environment key-value pairs |
-`stdio` | Child's stdio configuration | `pipe`
-`detached` | The child will be a process group leader |
-`uid` | Sets the user identity of the process |
-`gid` | Sets the group identity of the process |
-`verbose` | Display messages on the console | `false`
-`encoding` | Sets the encoding of the output string | `utf8`
-
-More info: [`child_process.spawn()`](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)
-
-``` js
-spawn('cat', 'test.txt').then((content) => {
-  console.log(content);
-});
-
-// $ cd "/target/folder"
-// $ cat "foo.txt" "bar.txt"
-spawn('cat', ['foo.txt', 'bar.txt'], { cwd: '/target/folder' }).then((content) => {
-  console.log(content);
-});
-```
-
-### stripHTML(str)
-
-Removes HTML tags in a string.
-
-### stripIndent(str)
-
-Strip leading whitespace from each line in a string. The line with the least number of leading whitespace, ignoring empty lines, determines the number to remove. Useful for removing redundant indentation.
-
-### wordWrap(str, [options])
-
-Wraps the string no longer than line width. This method breaks on the first whitespace character that does not exceed line width.
-
-Option | Description | Default
---- | --- | ---
-`width` | Line width | 80
-
-``` js
-wordWrap('Once upon a time')
-// Once upon a time
-
-wordWrap('Once upon a time, in a kingdom called Far Far Away, a king fell ill, and finding a successor to the throne turned out to be more trouble than anyone could have imagined...')
-// Once upon a time, in a kingdom called Far Far Away, a king fell ill, and finding\na successor to the throne turned out to be more trouble than anyone could have\nimagined...
-
-wordWrap('Once upon a time', {width: 8})
-// Once\nupon a\ntime
-
-wordWrap('Once upon a time', {width: 1})
-// Once\nupon\na\ntime
-```
-
-### tocObj(str, [options])
-
-Generate a table of contents in JSON format based on the given html string. Headings with attribute `data-toc-unnumbered="true"` will be marked as unnumbered.
-
-Option | Description | Default
---- | --- | ---
-`min_depth` | The minimum level of TOC | 1
-`max_depth` | The maximum level of TOC | 6
-
-
-``` js
-const html = [
-  '<h1 id="title_1">Title 1</h1>',
-  '<div id="title_1_1"><h2>Title 1.1</h2></div>',
-  '<h3 id="title_1_1_1">Title 1.1.1</h3>',
-  '<h2 id="title_1_2">Title 1.2</h2>',
-  '<h2 id="title_1_3">Title 1.3</h2>',
-  '<h3 id="title_1_3_1">Title 1.3.1</h3>',
-  '<h1 id="title_2">Title 2</h1>',
-  '<h2 id="title_2_1">Title 2.1</h2>'
-].join('\n');
-
-tocObj(html);
-/*
-[
-  { text: 'Title 1', id: 'title_1', level: 1 },
-  { text: 'Title 1.1', id: 'title_1_1', level: 2 },
-  { text: 'Title 1.1.1', id: 'title_1_1_1', level: 3 },
-  { text: 'Title 1.2', id: 'title_1_2', level: 2 },
-  { text: 'Title 1.3', id: 'title_1_3', level: 2 },
-  { text: 'Title 1.3.1', id: 'title_1_3_1', level: 3 },
-  { text: 'Title 2', id: 'title_2', level: 1 },
-  { text: 'Title 2.1', id: 'title_2_1', level: 2 },
-]
-*/
-
-tocObj(html, { min_depth: 2 });
-/*
-[
-  { text: 'Title 1.1', id: 'title_1_1', level: 2 },
-  { text: 'Title 1.1.1', id: 'title_1_1_1', level: 3 },
-  { text: 'Title 1.2', id: 'title_1_2', level: 2 },
-  { text: 'Title 1.3', id: 'title_1_3', level: 2 },
-  { text: 'Title 1.3.1', id: 'title_1_3_1', level: 3 },
-  { text: 'Title 2.1', id: 'title_2_1', level: 2 },
-]
-*/
-
-tocObj(html, { max_depth: 2 });
-/*
-[
-  { text: 'Title 1', id: 'title_1', level: 1 },
-  { text: 'Title 1.1', id: 'title_1_1', level: 2 },
-  { text: 'Title 1.2', id: 'title_1_2', level: 2 },
-  { text: 'Title 1.3', id: 'title_1_3', level: 2 },
-  { text: 'Title 2', id: 'title_2', level: 1 },
-  { text: 'Title 2.1', id: 'title_2_1', level: 2 },
-]
-*/
-
-tocObj('<h1 id="reference" data-toc-unnumbered="true">Reference</h1>')
-/*
-[
-  { text: 'Reference', id: 'reference', level: 1, unnumbered: true }
-]
-*/
-```
-
-### truncate(str, [options])
-
-Truncates a given text after a given `length` if text is longer than `length`. The last characters will be replaced with the `omission` option for a total length not exceeding `length`.
-
-Option | Description | Default
---- | --- | ---
-`length` | Max length of the string | 30
-`omission` | Omission text | ...
-`separator` | truncate text at a natural break |
-
-``` js
-truncate('Once upon a time in a world far far away')
-// "Once upon a time in a world..."
-
-truncate('Once upon a time in a world far far away', {length: 17})
-// "Once upon a ti..."
-
-truncate('Once upon a time in a world far far away', {length: 17, separator: ' '})
-// "Once upon a..."
-
-truncate('And they found that many people were sleeping better.', {length: 25, omission: '... (continued)'})
-// "And they f... (continued)"
-```
-
-### unescapeHTML(str)
-
-Unescapes HTML entities in a string.
-
-``` js
-unescapeHTML('&lt;p&gt;Hello &quot;world&quot;.&lt;&#x2F;p&gt;')
-// <p>Hello "world".</p>
-```
-
-### url_for(path, [option])
-
-Returns a url with the root path prefixed. Output is [encoded](#encodeurlstr) automatically. Requires [`bind(hexo)`](#bindhexo).
-
-Option | Description | Default
---- | --- | ---
-`relative` | Output relative link | Value of `config.relative_link`
-
-``` yml
-_config.yml
-root: /blog/ # example
-```
-
-``` js
-url_for('/a/path')
-// /blog/a/path
-```
-
-Relative link, follows `relative_link` option by default
-e.g. post/page path is '/foo/bar/index.html'
-
-``` yml
-_config.yml
-relative_link: true
-```
-
-``` js
-url_for('/css/style.css')
-// ../../css/style.css
-
-/* Override option
- * you could also disable it to output a non-relative link,
- * even when `relative_link` is enabled and vice versa.
- */
-url_for('/css/style.css', {relative: false})
-// /css/style.css
-```
-
-## bind(hexo)
-
-Following utilities require `bind(hexo)` / `bind(this)` / `call(hexo, input)` / `call(this, input)` to parse the user config when initializing:
-- [`full_url_for()`](#full_url_forpath)
-- [`url_for()`](#url_forpath)
-- [`relative_url()`](#relative_urlfrom-to)
-
-Below examples demonstrate different approaches to creating a [helper](https://hexo.io/api/helper) (each example is separated by `/******/`),
-
-``` js
-// Single function
-const url_for = require('hexo-util').url_for.bind(hexo);
-
-hexo.extend.helper.register('test_url', (str) => {
-  return url_for(str);
-})
-
-
-/******/
-// Multiple functions
-const url_for = require('hexo-util').url_for.bind(hexo)
-
-function testurlHelper(str) {
-  return url_for(str);
+```css
+/* The overall background color, including navigation, mobile navigation, footer, tab, etc.. */
+.bg-color {
+    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
 }
 
-hexo.extend.helper.register('test_url', testurlHelper);
-
-
-/******/
-// Functions separated into different files.
-// test_url.js
-module.exports = function(str) {
-  const url_for = require('hexo-util').url_for.bind(this);
-  return url_for(str);
+@-webkit-keyframes rainbow {
+   /* Dynamically switch background colors. */
 }
 
-// index.js
-hexo.extend.helper.register('test_url', require('./test_url'));
-
-
-/******/
-// Function.call() approach also works
-const {url_for} = require('hexo-util');
-module.exports = function(str) {
-  return url_for.call(this, str);
+@keyframes rainbow {
+    /* Dynamically switch background colors. */
 }
-
-hexo.extend.helper.register('test_url', require('./test_url'));
-
-
-/******/
-// Separating functions into individual files
-// Each file has multiple functions
-// test_url.js
-function testurlHelper(str) {
-  const url_for = require('hexo-util').url_for.bind(this);
-  return url_for(str);
-}
-
-module.exports =  {
-  testurlHelper: testurlHelper
-}
-
-// index.js
-hexo.extend.helper.register('test_url', require('./test_url').testurlHelper);
 ```
 
-## License
+### Modify banner picture and post's featured pictures
 
-MIT
+You can change `banner` pictures in `/source/medias/banner` as you like .Theme code can switch dynamically every day and just need 7 pictures.If you master `JavaScript`, you can change it to your favorite switching logic, such as Random switching. The code for switching `banner`is in `<script></script>` of `/layout/_partial/bg-cover-content.ejs`file.
 
-[Hexo]: http://hexo.io/
+```javascript
+$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+```
+
+There are 24 featured pictures in `/source/medias/featureimages`, you can add or delete some, and modify corresponding settings in the theme's `_config.yml`.
+
+## Changelog
+
+See [CHANGELOG.md](https://github.com/blinkfox/hexo-theme-matery/blob/master/CHANGELOG.md)
