@@ -1,6 +1,6 @@
 ---
-layout: page
+layout: “about”
 title: about
 date: 2024-05-23 16:41:46
-tags:
+type: "about"
 ---
