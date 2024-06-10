@@ -184,7 +184,7 @@ code:
 
 # 是否激活文章末尾的打赏功能，默认激活（你替换为的你自己的微信、支付宝二维码图片、或者使用网络图片也可以）.
 reward:
-  enable: true
+  enable: false
   title: 你的赏识是我前进的动力
   wechat: /medias/reward/wechat.png
   alipay: /medias/reward/alipay.jpg
@@ -567,7 +567,7 @@ featureImages:
 # noreprint（不允许转载 not allowed to reprint）
 # pay（付费转载 pay for reprinting）
 reprint:
-  enable: true # whether enable reprint section 是否启用“转载规则限定模块”
+  enable: false # whether enable reprint section 是否启用“转载规则限定模块”
   default: cc_by
 
 # DaoVoice online contact
